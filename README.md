@@ -7,5 +7,5 @@
 3. Create a virtual environment with a preferable name
 4. Activate virtual environment
 5. run `pip install -r requirements.txt`
-6. run `django-admin manage.py runserver`
+6. run `python manage.py runserver`
 7. go to 127.0.0.1:8000 in browser and enjoy our project
