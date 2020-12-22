@@ -1,5 +1,5 @@
 
-function LoginTest(){
+const  LoginTest = () => {
 return(
     <div>
         <p>Hello you are logged in!</p>

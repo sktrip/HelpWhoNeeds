@@ -5,6 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -28,10 +30,16 @@ const AppNavBar = () => {
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         Help Who Needs
-                </Typography>
-
-                    <Button color="inherit">About</Button>
-                    <Button color="inherit">Contact</Button>
+                    </Typography>
+                    <Button color="inherit" component={Link} to={"/"}>
+                        Home
+                    </Button>
+                    <Button color="inherit" component={Link} to={"/about"}>
+                        About
+                    </Button>
+                    <Button color="inherit" component={Link} to={"/login"}>
+                        Contact
+                    </Button>
                 </Toolbar>
             </AppBar>
         </div>
