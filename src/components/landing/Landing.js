@@ -42,9 +42,6 @@ const Landing = () => {
                 >
                     I can Help
         </Button>
-
-                <p>You are logging as {user} </p>
-
         </div>
         
     );
