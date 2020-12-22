@@ -19,7 +19,7 @@ const Landing = () => {
                     helping with chores such as shopping, GP visits, prescriptions, dog
                     walking or just some social contact with the appropriate measures in
                     place. We hope this app brings some comfort and relief to the users
-                    with a sense of moral and social obligation.
+                    with a sense of moral and social obligation. {user}
         </p>
 
                 <Button
@@ -39,6 +39,7 @@ const Landing = () => {
                     component={Link}
                     to={"/login"}
                     onClick={handleClick}
+
                 >
                     I can Help
         </Button>
