@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import AppNavBar from "./components/structure/AppNavBar";
 import Landing from "./components/landing/Landing";
-import About from "./components/About/About";
+import About from "./components/about/About";
 import Footer from "./components/structure/Footer";
 import LoginTest from "./components/login/LoginTest";
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom";
