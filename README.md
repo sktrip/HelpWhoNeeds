@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ##Installation Steps:
 
-1) Clone the repository :Go to the terminal and run git clone https://github.com/YourTechAngels/HelpWhoNeeds-FrontEnd.git
+1) Clone the repository :Go to the terminal and run git clone https://github.com/YourTechAngels/FrontEnd-REACT-HelpWhoNeeds.git
 2) Install the dependencies : CD to your folder where your have cloned the project and run `npm install` 
 3) To check the Application is working : On your terminal run `npm start`
 4) Check out a new branch for adding any new feature: run `git checkout -b my-branch-name`
