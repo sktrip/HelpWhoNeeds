@@ -21,7 +21,7 @@ function App() {
                 </Route>
                 <Route path="/login">
                     <LoginTest />
-                </Route>
+                </Route>                
                 </Switch>
                 <Footer />
             </div>

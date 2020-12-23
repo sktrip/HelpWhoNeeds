@@ -22,6 +22,7 @@ const Landing = () => {
                     with a sense of moral and social obligation. {user}
         </p>
 
+        <p id="info-p"> If you would like help or need any assistant using our system, please call <strong>0800 123 4567</strong>.</p>
                 <Button
                     variant="outlined"
                     color="default"
