@@ -11,13 +11,16 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-
+import SvgIcon from "@material-ui/core/SvgIcon";
 
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        "& > svg": {
+            margin: theme.spacing(2),
+        },
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -29,6 +32,14 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#9370db",
     },
 }));
+
+function HomeIcon(props) {
+    return (
+        <SvgIcon {...props}>
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </SvgIcon>
+    );
+} /*For HomeIcons */
 
 const AppNavBar = () => {
     const classes = useStyles();
@@ -47,6 +58,7 @@ const AppNavBar = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <div className={classes.root}>
             <FormGroup>
@@ -63,14 +75,12 @@ const AppNavBar = () => {
             </FormGroup>
             <AppBar position="static" className={classes.appBar}>
                 <Toolbar>
-                 <HomeIcon color="secondary" />
+                    <HomeIcon color="action" fontSize="large" onClick={event =>  window.location.href='/'} />
                     <Typography variant="h6" className={classes.title}>
                         Help Who Needs
-                    </Typography>
-                  
-                    <Button color="inherit" component={Link} to={"/"}>
-                        Home
-                    </Button>
+            </Typography>
+
+                    
                     <Button color="inherit" component={Link} to={"/about"}>
                         About
                     </Button>
