@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -13,7 +14,6 @@ html, body {
   box-sizing: border-box;
   margin-bottom: -50px;
   padding-bottom: 50px;
- 
 }
 
 p {
@@ -22,17 +22,22 @@ p {
   max-width: 90%;
   text-align: justify;
 }
- #info-p{
-text-align: center;
- }
+#info-p {
+  text-align: center;
+}
 span {
   margin: 0 10px;
 }
 
+#landingpage-button1 {
+  margin-right: 10px;
+}
+#landingpage-button2 {
+  margin-left: 10px;
+}
 /**
  * Footer CSS
  */
-
 
 footer {
   box-sizing: border-box;
@@ -43,25 +48,24 @@ footer {
   bottom: 0;
   position: absolute;
   width: 100%;
-  text-align: center;  
+  text-align: center;
 }
 /*Registration Page css*/
 main {
-margin-top:1px;
+  margin-top: 1px;
 }
 
 label {
   display: block;
   margin-bottom: 5px;
   margin-right: 20px;
-      
 }
 
-input, button  {
+input,
+button {
   margin-bottom: 10px;
-  white-space:nowrap;
+  white-space: nowrap;
 }
-
 
 form {
   background-color: white;
@@ -72,9 +76,9 @@ form {
 }
 
 #submit-button {
-  border:2px;
+  border: 2px;
   font-weight: bold;
-  margin-top:10px;
+  margin-top: 10px;
 }
 /*Login form*/
 .login-form {
@@ -83,11 +87,10 @@ form {
   margin: 0 auto;
   padding: 30px;
   border: 0px;
-
 }
 
-#Search-button{
-  border:2px;
+#Search-button {
+  border: 2px;
   font-weight: bold;
-  margin-top:25px;
+  margin-top: 25px;
 }

@@ -3,10 +3,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
 const Landing = () => {
-    const handleClick = () => {
-        setUser("Volunteer");
-    };
-
+    
     const [user, setUser] = useState(" ");
     return (
             <div id="content-wrapper" align="center">
@@ -24,6 +21,7 @@ const Landing = () => {
 
         <p id="info-p"> If you would like help or need any assistant using our system, please call <strong>0800 123 4567</strong>.</p>
                 <Button
+                    id= "landingpage-button1"
                     variant="outlined"
                     color="default"
                     component={Link}
@@ -33,14 +31,16 @@ const Landing = () => {
                 }}
                 >
                     I need Help
-        </Button>
+                </Button>
+                
                 <Button
+                    className= "landingpage-button2"
                     variant="outlined"
                     color="default"
                     component={Link}
                     to={"/login"}
-                    onClick={handleClick}
-
+                    onClick={() => {
+                        setUser("Volunteer");}}
                 >
                     I can Help
         </Button>
