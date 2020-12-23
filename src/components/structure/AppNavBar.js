@@ -1,18 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
+import { AppBar, Toolbar, Typography, Button, IconButton,  Switch, FormControlLabel, FormGroup, MenuItem, Menu, SvgIcon } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import SvgIcon from "@material-ui/core/SvgIcon";
-
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,10 +10,7 @@ const useStyles = makeStyles((theme) => ({
         "& > svg": {
             margin: theme.spacing(2),
         },
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
+    },   
     title: {
         flexGrow: 1,
     },
@@ -57,6 +43,12 @@ const AppNavBar = () => {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+    const handleSignOut = () =>{
+        alert("yaya");
+        setAuth(false);   
+        alert(auth);
+        handleClose();
     };
 
     return (
@@ -115,7 +107,7 @@ const AppNavBar = () => {
                             >
                                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                                <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
                             </Menu>
                         </div>
                     )}

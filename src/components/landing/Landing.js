@@ -1,12 +1,27 @@
 import { useState } from "react";
-import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import { makeStyles, Button } from "@material-ui/core";
 
+const useStyles = makeStyles({
+    button:{
+        margin:"10px",
+    },
+    pInfo:{
+        textAlign: "center",
+    },
+    divContentWrapper:{
+        textAlign: "center",
+        minHeight: "100%",
+    }
+
+});
 const Landing = () => {
     
+    const classes = useStyles();
     const [user, setUser] = useState(" ");
+
     return (
-            <div id="content-wrapper" align="center">
+            <div className={classes.divContentWrapper} >
                 <h1>Help Who Needs</h1>
                 <p>
                     Our TechForGood project aims to match a volunteer with a vulnerable
@@ -19,9 +34,9 @@ const Landing = () => {
                     with a sense of moral and social obligation. {user}
         </p>
 
-        <p id="info-p"> If you would like help or need any assistant using our system, please call <strong>0800 123 4567</strong>.</p>
+        <p className={classes.pInfo}> If you would like help or need any assistant using our system, please call <strong>0800 123 4567</strong>.</p>
                 <Button
-                    id= "landingpage-button1"
+                    className= {classes.button}
                     variant="outlined"
                     color="default"
                     component={Link}
@@ -34,7 +49,7 @@ const Landing = () => {
                 </Button>
                 
                 <Button
-                    className= "landingpage-button2"
+                    className= {classes.button} 
                     variant="outlined"
                     color="default"
                     component={Link}
