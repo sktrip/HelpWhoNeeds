@@ -76,7 +76,7 @@ const AppNavBar = () => {
                     <Button color="inherit" component={Link} to={"/about"}>
                         About
                     </Button>
-                    <Button color="inherit" component={Link} to={"/login"}>
+                    <Button color="inherit" component={Link} to={"/contact"}>
                         Contact
                     </Button>
                     {auth && (
