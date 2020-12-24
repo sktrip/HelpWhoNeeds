@@ -13,18 +13,23 @@ import NewTaskForm from './NewTaskForm'
 const useStyles =
     makeStyles(
         {
+            h1: {
+                color: "#4C4B51"
+            },
             largeButton: {
                 border: 5,
                 color: "#FF8E53",
                 padding: "15px 15px",
+                margin: "5px 15px 10px 15px",
                 height: 100,
                 width: 100,
             },
             largeIcon:
-                { fontSize: 80 },
+                { fontSize: 60 },
 
             label: {
-                flexDirection: 'column'
+                flexDirection: 'column',
+                // color: '#4C4B51'
             },
             icon: {
                 fontSize: '32px !important',
@@ -46,23 +51,31 @@ function AddTask() {
     const classes = useStyles();
     // return <ThemeProvider theme={theme}>
     return <div className="App">
-        <h1>I need help with...</h1>
-        <Button startIcon={<ShoppingCartIcon className={classes.icons} />}
-            className={classes.button} />
-        <Button startIcon={<LocalPharmacyIcon style={{ fontSize: 80 }} />}
-            className={classes.button} />
-        <IconButton className={classes.largeButton} aria-label="Delete">
-            <PetsIcon className={classes.largeIcon} />
-        </IconButton>
-        {/* className={classes.button} /> */}
+        <h1 className={classes.h1}>I need help with...</h1>
         <Button classes={{ root: classes.largeButton, label: classes.label }}>
-            <LocalHospitalIcon className={classes.icon} />
-        Hospital
+            <ShoppingCartIcon className={classes.largeIcon} /> 
+            Shopping
         </Button>
-        <Button startIcon={<PhoneIcon />}
-            className={classes.button} />
-        <Button startIcon={<LiveHelpIcon />}
-            className={classes.button} />
+        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+            <LocalPharmacyIcon className={classes.largeIcon} />
+            Pharmacy
+        </Button>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+            <PetsIcon className={classes.largeIcon} />
+            Dog Walk
+        </Button>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+            <LocalHospitalIcon className={classes.largeIcon} />
+            Hospital
+        </Button>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+            <PhoneIcon className={classes.largeIcon} />
+            Phone Call
+        </Button>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+            <LiveHelpIcon className={classes.largeIcon} />
+            Other
+        </Button>
     </div>
     // </ThemeProvider>
 }
