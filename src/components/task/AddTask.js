@@ -39,45 +39,67 @@ const useStyles =
 
 function AddTask() {
 
-    const [addingTaskOn, setAddingTask] = React.useState(false)
-
-    const handleAddClick = () => {
-        console.log("It's working!")
-        return <NewTaskForm />
+    const dialogHeader = {
+        "shop": "Could you please help me with shoping?",
+        "pharm": "Could you please help me to collect medicine?",
+        "dog": "Could you please walk with my dog?",
+        "hospital": "Could you please help me to visit hospital appointment?",
+        "phone": "I'd like to chat",
+        "any": "Could you please help me?",
     }
 
+    const [showAddDialog, setShowAddDialog] = React.useState(false);
+    const [request, setRequest] = React.useState(null);
 
+    const handleClickOpen = (e, taskType) => {
+        setRequest(dialogHeader[taskType])
+        setShowAddDialog(true)
+    }
+
+    const handleClose = () => {
+        setRequest(null)
+        setShowAddDialog(false)
+    }
 
     const classes = useStyles();
     // return <ThemeProvider theme={theme}>
     return <div className="App">
+
         <h1 className={classes.h1}>I need help with...</h1>
-        <Button classes={{ root: classes.largeButton, label: classes.label }}>
-            <ShoppingCartIcon className={classes.largeIcon} /> 
+        
+        <Button classes={{ root: classes.largeButton, label: classes.label }}
+            onClick={(e) => handleClickOpen(e, "shop")}>
+            <ShoppingCartIcon className={classes.largeIcon} />
             Shopping
         </Button>
-        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}
+            onClick={(e) => handleClickOpen(e, "pharm")}>
             <LocalPharmacyIcon className={classes.largeIcon} />
             Pharmacy
         </Button>
-        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}
+            onClick={(e) => handleClickOpen(e, "dog")}>
             <PetsIcon className={classes.largeIcon} />
             Dog Walk
         </Button>
-        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}
+            onClick={(e) => handleClickOpen(e, "hospital")}>
             <LocalHospitalIcon className={classes.largeIcon} />
             Hospital
         </Button>
-        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}
+            onClick={(e) => handleClickOpen(e, "phone")}>
             <PhoneIcon className={classes.largeIcon} />
             Phone Call
         </Button>
-        <Button classes={{ root: classes.largeButton, label: classes.label }}>
+        <Button classes={{ root: classes.largeButton, label: classes.label }}
+            onClick={(e) => handleClickOpen(e, "any")}>
             <LiveHelpIcon className={classes.largeIcon} />
             Other
         </Button>
+
+        <NewTaskForm open={showAddDialog} onClose={handleClose} reqHeader={request}/>
     </div>
-    // </ThemeProvider>
 }
 
 export default AddTask
