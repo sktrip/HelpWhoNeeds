@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles, Button } from "@material-ui/core";
+import { useEffect } from "react";
 
 const useStyles = makeStyles({
     button:{
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
     divContentWrapper:{
         textAlign: "center",
         minHeight: "100%",
+        paddingLeft: "50px",
     }
 
 });
@@ -20,6 +22,13 @@ const Landing = () => {
     const classes = useStyles();
     const [user, setUser] = useState(" ");
 
+    useEffect( () => {
+        console.log("in useEffect");
+        return () =>{
+            console.log("in useEffect Cleanup");
+        }
+    },[user])
+    
     return (
             <div className={classes.divContentWrapper} >
                 <h1>Help Who Needs</h1>

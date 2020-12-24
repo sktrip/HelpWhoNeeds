@@ -4,7 +4,7 @@ import AppNavBar from "./components/structure/AppNavBar";
 import Landing from "./components/landing/Landing";
 import About from "./components/about/About";
 import Footer from "./components/structure/Footer";
-import LoginTest from "./components/login/LoginTest";
+import SignIn from "./components/login/SignIn";
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
                     <About />
                 </Route>
                 <Route path="/login">
-                    <LoginTest />
+                    <SignIn />
                 </Route>                
                 </Switch>
                 <Footer />
