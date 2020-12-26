@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PetsIcon from '@material-ui/icons/Pets';
 import PhoneIcon from '@material-ui/icons/Phone';
@@ -98,7 +97,7 @@ function AddTask() {
             Other
         </Button>
 
-        <NewTaskForm open={showAddDialog} onClose={handleClose} reqHeader={request}/>
+        <NewTaskForm open={showAddDialog} handleClose={handleClose} reqHeader={request}/>
     </div>
 }
 

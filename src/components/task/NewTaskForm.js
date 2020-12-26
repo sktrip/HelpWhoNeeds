@@ -12,21 +12,47 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-function FormDialog({ open, onClose, reqHeader }) {
+function FormDialog({ open, handleClose, reqHeader }) {
 
     const [state, setState] = React.useState({
-        checkedAM: false,
-        checkedPM: false,
+        checkedAM: true,
+        checkedPM: true,
     });
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2021-01-01T00:00:00'));
+    const [selectedDate, setSelectedDate] = React.useState(null);  //new Date());
 
     const handleChange = (event) => {
+        console.log({ ...state, [event.target.name]: event.target.checked })
         setState({ ...state, [event.target.name]: event.target.checked });
     };
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
+
+    const onClose = () => {
+        setState({
+            checkedAM: true,
+            checkedPM: true,
+        })
+        setSelectedDate(null)
+        handleClose()
+    }
+
+    let formState = {
+        formData: {
+            type: '',
+            details: '',
+            time_slots: [
+                {
+                    am: false,
+                    pm: false,
+                    date: '01.01.01'
+                }
+            ],
+            dbs_req: false
+        },
+        submitted: false,
+    }
 
     return (
         <div>
@@ -38,7 +64,8 @@ function FormDialog({ open, onClose, reqHeader }) {
                     </DialogContentText>
 
                     <TextField
-                        id="task-details"
+                        // id="task-details"
+                        name="taskDetails"
                         autoFocus
                         label="Details"
                         multiline
@@ -47,34 +74,20 @@ function FormDialog({ open, onClose, reqHeader }) {
                         variant="outlined"
                         fullWidth
                     />
-                    <FormGroup row>
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    name="CheckedAM"
-                                    state={state.checkedAM}
-                                    onChange={handleChange}
-                                />}
-                            label="AM"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    name="CheckedPM"
-                                    state={state.checkedPM}
-                                    onChange={handleChange}
-                                />}
-                            label="PM"
-                        />
-                    </FormGroup>
+
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                             // disableToolbar
-                            variant="inline"
+                            // variant="inline"
                             format="MM/dd/yyyy"
                             margin="normal"
-                            id="date-picker-inline"
-                            label="Date picker inline"
+                            id="date-picker"
+                            mask="__/__/____"
+                            minDate={new Date()}
+                            minDateMessage="Date cannot be in the past"
+                            // label="Select date"
+                            // autoOk={true}
+                            // hintText="Select Date"
                             value={selectedDate}
                             onChange={handleDateChange}
                             KeyboardButtonProps={{
@@ -82,10 +95,30 @@ function FormDialog({ open, onClose, reqHeader }) {
                             }}
                         />
                     </MuiPickersUtilsProvider>
+                    <FormGroup row>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    name="checkedAM"
+                                    checked={state.checkedAM}
+                                    onChange={handleChange}
+                                />}
+                            label="AM"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    name="checkedPM"
+                                    checked={state.checkedPM}
+                                    onChange={handleChange}
+                                />}
+                            label="PM"
+                        />
+                    </FormGroup>
                     <FormControlLabel disabled
                         control={
                             <Checkbox
-                                name="CheckedPM"
+                                name="dbsRequired"
                                 checked={false}
                             />}
                         label="Only volunteers with DBS certificate"
