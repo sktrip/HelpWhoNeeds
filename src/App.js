@@ -6,6 +6,7 @@ import About from "./components/landing/About";
 import Contact from "./components/landing/Contact";
 import Footer from "./components/structure/Footer";
 import SignIn from "./components/login/SignIn";
+import VolunteerRegistration  from "./components/volunteerRegistration/VolunteerRegistration"
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom";
 
 function App() {
@@ -25,7 +26,10 @@ function App() {
                 </Route>
                 <Route path="/login">
                     <SignIn />
-                </Route>                
+                </Route>      
+                <Route path="/volunteerRegistration">
+                    <VolunteerRegistration />
+                </Route>             
                 </Switch>
                 <Footer />
             </div>
