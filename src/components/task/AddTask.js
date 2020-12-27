@@ -38,25 +38,16 @@ const useStyles =
 
 function AddTask() {
 
-    const dialogHeader = {
-        "shop": "Could you please help me with shoping?",
-        "pharm": "Could you please help me to collect medicine?",
-        "dog": "Could you please walk with my dog?",
-        "hospital": "Could you please help me to visit hospital appointment?",
-        "phone": "I'd like to chat",
-        "any": "Could you please help me?",
-    }
-
     const [showAddDialog, setShowAddDialog] = React.useState(false);
-    const [request, setRequest] = React.useState(null);
+    const [taskType, setTaskType] = React.useState(null);
 
     const handleClickOpen = (e, taskType) => {
-        setRequest(dialogHeader[taskType])
+        setTaskType(taskType)
         setShowAddDialog(true)
     }
 
     const handleClose = () => {
-        setRequest(null)
+        setTaskType(null)
         setShowAddDialog(false)
     }
 
@@ -97,7 +88,7 @@ function AddTask() {
             Other
         </Button>
 
-        <NewTaskForm open={showAddDialog} handleClose={handleClose} reqHeader={request}/>
+        <NewTaskForm open={showAddDialog} handleClose={handleClose} taskType={taskType}/>
     </div>
 }
 

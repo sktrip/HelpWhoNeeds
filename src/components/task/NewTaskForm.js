@@ -1,4 +1,4 @@
-import "date-fns";
+import { isBefore } from "date-fns";
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -17,43 +17,27 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useForm, Controller } from 'react-hook-form';
-import { ErrorSharp } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
 
-function FormDialog({ open, handleClose, reqHeader }) {
+const useStyles =
+    makeStyles({
+        root: {
+            padding: "8px 0px 8px 0px"
+        }
+    })
 
-    // const [state, setState] = React.useState({
-    //     checkedAM: true,
-    //     checkedPM: true,
-    // });
+function FormDialog({ open, handleClose, taskType }) {
 
-    // const handleStateChange = (event) => {
-    // console.log({ ...state, [event.target.name]: event.target.checked })
-    //     setState({ ...state, [event.target.name]: event.target.checked });
-    // };
-
-    // const [selectedDate, setSelectedDate] = React.useState(null);
-
-    // const handleDateChange = (date) => {
-    //     setSelectedDate(date);
-    // };
-
-    const onClose = () => {
-        // setState({
-        //     checkedAM: true,
-        //     checkedPM: true,
-        // })
-        // setSelectedDate(null)
-        handleClose()
+    const dialogHeader = {
+        "shop": "I need help with shoping",
+        "pharm": "I need help to collect medicine",
+        "dog": "I need help with walking with my dog",
+        "hospital": "I need help to visit hospital appointment?",
+        "phone": "I'd like to chat",
+        "any": "I need help with ...",
     }
 
-    // function required(displayName) {
-    //     return function validateRequired(value) {
-    //         // console.log("VALIDATING: ", displayName, value);
-    //         return value !== null || `${displayName} is required.`;
-    //     };
-    // }
-
-    // var isBefore = require('date-fns/is_before')
+    const classes = useStyles();
 
     const defaultTimeSlotValues = {
         startDate: null,
@@ -69,8 +53,9 @@ function FormDialog({ open, handleClose, reqHeader }) {
     const handleStartDate = date => {
         console.log("startDate CHANGED: ", date);
         setValue("startDate", date);
-        if (!values.endDate)
-            // || isBefore(values.endDate, values.startDate)) 
+        console.log("(!values.endDate) :", (!values.endDate))
+        console.log("isBefore(values.endDate, values.startDate):", isBefore(values.endDate, values.startDate))
+        if ((!values.endDate) || isBefore(values.endDate, values.startDate))
             setValue("endDate", date);
         return values
     };
@@ -88,67 +73,51 @@ function FormDialog({ open, handleClose, reqHeader }) {
         setValue("endTime", time);
     };
 
-    // const { register, handleSubmit, errors } = useForm()
-
-    const [submittedData, setSubmittedData] = React.useState({});
+    // const [submittedData, setSubmittedData] = React.useState({});
 
     const onSubmit = (data) => {
         console.log("SUBMITTED: ", data)
-        setSubmittedData(data)
+        // setSubmittedData(data)
         handleClose()
     };
 
-    // function useOnMount(handler) {
-    //     return React.useEffect(handler, []);
-    // }
-
-    // useOnMount(() => {
-    //     console.log("useEffect register");
-
-    //     register({ name: "startDate", type: "custom" }, { required: true })
-    //     register({ name: "startTime", type: "custom" }, { required: true })
-    //     register({ name: "endDate", type: "custom" }, { required: true })
-    //     register({ name: "endTime", type: "custom" }, { required: true })
-    // });
-
     const values = getValues();
-
-    console.log("RENDERING VALUES: ", values);
-    console.log("RENDERING ERRORS: ", errors);
 
     return (
         <div>
-            <Dialog open={open} onClose={onClose}>
+            <Dialog open={open} onClose={handleClose}>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <DialogTitle id="form-add-task">{reqHeader}</DialogTitle>
+                    <DialogTitle id="dialog-add-task">
+                        {dialogHeader[taskType]}
+                    </DialogTitle>
                     <DialogContent>
                         <DialogContentText>
                             Please, provide as many details as you can
                     </DialogContentText>
 
-                        <TextField
+                        <Controller
+                            as={<TextField />}
+                            control={control}
                             name="taskDetails"
                             inputRef={register}
                             autoFocus
                             label="Details"
                             multiline
-                            rows={6}
+                            rows={3}
                             defaultValue=""
                             variant="outlined"
                             fullWidth
-                        // rules={{required: true}}
-                        // errors={errors.taskDetails}
-                        // helperText={errors.taskDetails ? "Details are required": ""}
+                            rules={{ required: true }}
+                            errors={errors.taskDetails}
+                            helperText={errors.taskDetails ? "Details are required" : ""}
                         />
 
 
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                            <Grid container spacing={3}>
-                                <Grid item xs={12} sm={6}>
+                            <Grid id="start-time" container spacing={3}>
+                                <Grid item xs={12} sm={6} >
                                     <Controller
-                                        as={
-                                            <KeyboardDatePicker />
-                                        }
+                                        as={<KeyboardDatePicker />}
                                         control={control}
                                         rules={{ required: true }}
                                         defaultValue={defaultTimeSlotValues.startDate}
@@ -171,9 +140,7 @@ function FormDialog({ open, handleClose, reqHeader }) {
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <Controller
-                                        as={
-                                            <KeyboardTimePicker />
-                                        }
+                                        as={<KeyboardTimePicker />}
                                         control={control}
                                         rules={{ required: true }}
                                         defaultValue={defaultTimeSlotValues.startTime}
@@ -192,11 +159,11 @@ function FormDialog({ open, handleClose, reqHeader }) {
                                         helperText={errors.startTime && errors.startTime.message}
                                     />
                                 </Grid>
+                            </Grid>
+                            <Grid id="finish-time" container spacing={3}>
                                 <Grid item xs={12} sm={6}>
                                     <Controller
-                                        as={
-                                            <KeyboardDatePicker />
-                                        }
+                                        as={<KeyboardDatePicker />}
                                         control={control}
                                         rules={{ required: true }}
                                         defaultValue={defaultTimeSlotValues.endDate}
@@ -221,9 +188,7 @@ function FormDialog({ open, handleClose, reqHeader }) {
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <Controller
-                                        as={
-                                            <KeyboardTimePicker />
-                                        }
+                                        as={<KeyboardTimePicker />}
                                         defaultValue={defaultTimeSlotValues.endTime}
                                         control={control}
                                         rules={{ required: true }}
@@ -255,11 +220,10 @@ function FormDialog({ open, handleClose, reqHeader }) {
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={onClose} color="primary">
+                        <Button onClick={handleClose} color="primary">
                             Cancel
                     </Button>
-                        <Button type="Submit">
-                            {/* onClick={onClose} color="primary"> */}
+                        <Button type="Submit" color="primary">
                             Add
                     </Button>
                     </DialogActions>
