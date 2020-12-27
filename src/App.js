@@ -2,9 +2,10 @@ import React from "react";
 import "./App.css";
 import AppNavBar from "./components/structure/AppNavBar";
 import Landing from "./components/landing/Landing";
-import About from "./components/about/About";
+import About from "./components/landing/About";
+import Contact from "./components/landing/Contact";
 import Footer from "./components/structure/Footer";
-import LoginTest from "./components/login/LoginTest";
+import SignIn from "./components/login/SignIn";
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom";
 
 function App() {
@@ -19,8 +20,11 @@ function App() {
                 <Route path="/about">
                     <About />
                 </Route>
+                <Route path="/contact">
+                    <Contact />
+                </Route>
                 <Route path="/login">
-                    <LoginTest />
+                    <SignIn />
                 </Route>                
                 </Switch>
                 <Footer />

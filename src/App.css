@@ -3,94 +3,14 @@ body {
   height: 100%;
   margin: 0;
 }
-
-/**
- * Content CSS
- */
-
-#content-wrapper {
-  min-height: 100%;
-  /* sticky footer */
-  box-sizing: border-box;
-  margin-bottom: -50px;
-  padding-bottom: 50px;
-}
-
 p {
   margin-top: 30px;
   margin-bottom: 30px;
   max-width: 90%;
   text-align: justify;
 }
-#info-p {
-  text-align: center;
-}
+
 span {
   margin: 0 10px;
 }
 
-#landingpage-button1 {
-  margin-right: 10px;
-}
-#landingpage-button2 {
-  margin-left: 10px;
-}
-/**
- * Footer CSS
- */
-
-footer {
-  box-sizing: border-box;
-  height: 50px;
-  line-height: 50px;
-  background-color: #eee;
-  border-top: 1px solid #e0e0e0;
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-}
-/*Registration Page css*/
-main {
-  margin-top: 1px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  margin-right: 20px;
-}
-
-input,
-button {
-  margin-bottom: 10px;
-  white-space: nowrap;
-}
-
-form {
-  background-color: white;
-  width: 90%;
-  margin: 0 auto;
-  padding: 30px;
-  border: 1px solid black;
-}
-
-#submit-button {
-  border: 2px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-/*Login form*/
-.login-form {
-  background-color: white;
-  width: 60%;
-  margin: 0 auto;
-  padding: 30px;
-  border: 0px;
-}
-
-#Search-button {
-  border: 2px;
-  font-weight: bold;
-  margin-top: 25px;
-}
