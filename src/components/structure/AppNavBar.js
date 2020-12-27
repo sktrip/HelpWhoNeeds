@@ -45,9 +45,8 @@ const AppNavBar = () => {
         setAnchorEl(null);
     };
     const handleSignOut = () =>{
-        alert("yaya");
         setAuth(false);   
-        alert(auth);
+        //alert(auth);
         handleClose();
     };
 
