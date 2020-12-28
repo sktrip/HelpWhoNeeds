@@ -7,7 +7,7 @@ const useStyles = makeStyles({
         padding: "15px",
         backgroundColor: "#eee",
         borderTop: "1px solid #e0e0e0",
-        bottom: "0",
+       // bottom: "0",
         position: "absolute",
         width: "100%",
         textAlign: "center",
