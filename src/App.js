@@ -7,6 +7,7 @@ import Contact from "./components/landing/Contact";
 import Footer from "./components/structure/Footer";
 import SignIn from "./components/login/SignIn";
 import VolunteerRegistration  from "./components/volunteerRegistration/VolunteerRegistration"
+import VolunteerSearchTask from "./components/volunteerTask/VolunteerSearchTask"
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom"
 import './App.css'
 
@@ -31,6 +32,9 @@ function App() {
                 </Route>      
                 <Route path="/volunteerRegistration">
                     <VolunteerRegistration />
+                </Route> 
+                <Route path="/volunteerSearchTask">
+                    <VolunteerSearchTask />
                 </Route>             
                 </Switch>
                 </div>
