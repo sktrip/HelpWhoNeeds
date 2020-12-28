@@ -1,4 +1,4 @@
-import { isBefore } from "date-fns";
+import { isBefore, getHours, getMinutes, setHours, setMinutes } from "date-fns";
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -26,7 +26,7 @@ const useStyles =
         }
     })
 
-function FormDialog({ open, handleClose, taskType }) {
+function FormDialog({ open, handleClose, taskType, addTask }) {
 
     const dialogHeader = {
         "shop": "I need help with shoping",
@@ -78,6 +78,14 @@ function FormDialog({ open, handleClose, taskType }) {
     const onSubmit = (data) => {
         console.log("SUBMITTED: ", data)
         // setSubmittedData(data)
+        const startHours = getHours(data.startTime)
+        const startMins = getMinutes(data.startTime)
+        const endHours = getHours(data.endTime)
+        const endMins = getMinutes(data.endTime)
+        data.startDate = setMinutes(setHours(data.startDate, startHours), startMins)
+        data.endDate = setMinutes(setHours(data.endDate, endHours), endMins)
+        addTask({tasType: taskType, taskDetails: data.taskDetails,
+                startTime: data.startDate, endTime: data.endTime, dbsReq: false})
         handleClose()
     };
 
@@ -91,10 +99,6 @@ function FormDialog({ open, handleClose, taskType }) {
                         {dialogHeader[taskType]}
                     </DialogTitle>
                     <DialogContent>
-                        <DialogContentText>
-                            Please, provide as many details as you can
-                    </DialogContentText>
-
                         <Controller
                             as={<TextField />}
                             control={control}
@@ -107,11 +111,14 @@ function FormDialog({ open, handleClose, taskType }) {
                             defaultValue=""
                             variant="outlined"
                             fullWidth
-                            rules={{ required: true }}
-                            errors={errors.taskDetails}
-                            helperText={errors.taskDetails ? "Details are required" : ""}
+                            // rules={{ required: true }}
+                            // errors={errors.taskDetails}
+                            // helperText={errors.taskDetails ? "Details are required" : ""}
                         />
-
+                        <DialogContentText >
+                            <p> When do you need it? <br />
+                                Note, providing wider time window will increase your chances to find a volunteer. </p>
+                        </DialogContentText>
 
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <Grid id="start-time" container spacing={3}>
@@ -123,7 +130,7 @@ function FormDialog({ open, handleClose, taskType }) {
                                         defaultValue={defaultTimeSlotValues.startDate}
                                         id="startDate"
                                         name="startDate"
-                                        label="Date"
+                                        label="Starting from"
                                         format="dd.MM.yyyy"
                                         disablePast
                                         margin="normal"
@@ -146,7 +153,7 @@ function FormDialog({ open, handleClose, taskType }) {
                                         defaultValue={defaultTimeSlotValues.startTime}
                                         id="startTime"
                                         name="startTime"
-                                        label="Starts at"
+                                        label="Time"
                                         margin="normal"
                                         ampm={true}
                                         fullWidth
@@ -169,7 +176,7 @@ function FormDialog({ open, handleClose, taskType }) {
                                         defaultValue={defaultTimeSlotValues.endDate}
                                         id="endDate"
                                         name="endDate"
-                                        label="Date"
+                                        label="Ending at"
                                         format="dd.MM.yyyy"
                                         clearable
                                         disablePast
@@ -194,7 +201,7 @@ function FormDialog({ open, handleClose, taskType }) {
                                         rules={{ required: true }}
                                         id="endTime"
                                         name="endTime"
-                                        label="Ends at"
+                                        label="Time"
                                         margin="normal"
                                         ampm={true}
                                         fullWidth

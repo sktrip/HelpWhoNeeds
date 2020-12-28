@@ -36,7 +36,15 @@ const useStyles =
             }
         })
 
+let taskList = []
+
 function AddTask() {
+
+    const addTask = newTask => {
+        taskList = [...taskList, newTask]
+        console.log("New task added: ", newTask)
+        console.log("Tasks list :", taskList)
+    }
 
     const [showAddDialog, setShowAddDialog] = React.useState(false);
     const [taskType, setTaskType] = React.useState(null);
@@ -56,7 +64,7 @@ function AddTask() {
     return <div className="App">
 
         <h1 className={classes.h1}>I need help with...</h1>
-        
+
         <Button classes={{ root: classes.largeButton, label: classes.label }}
             onClick={(e) => handleClickOpen(e, "shop")}>
             <ShoppingCartIcon className={classes.largeIcon} />
@@ -88,7 +96,7 @@ function AddTask() {
             Other
         </Button>
 
-        <NewTaskForm open={showAddDialog} handleClose={handleClose} taskType={taskType}/>
+        <NewTaskForm open={showAddDialog} handleClose={handleClose} taskType={taskType} addTask={addTask} />
     </div>
 }
 
