@@ -49,7 +49,7 @@ const Landing = () => {
                     variant="outlined"
                     color="default"
                     component={Link}
-                    to={"/login"}
+                    to={"/login/Vulnerable"}
                     onClick={() => {
                         setUser("Vulnerable");
                 }}
@@ -62,7 +62,7 @@ const Landing = () => {
                     variant="outlined"
                     color="default"
                     component={Link}
-                    to={"/login"}
+                    to={"/login/Volunteer"}
                     onClick={() => {
                         setUser("Volunteer");}}
                 >
