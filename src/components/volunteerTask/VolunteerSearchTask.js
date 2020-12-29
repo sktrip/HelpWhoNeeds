@@ -48,6 +48,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with Shopping from Tesco",
             date: "2020-12-28",
             distance: 1,
+            volId: null,
         },
         {
             id: 2,
@@ -57,6 +58,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with dog walkingevery morning and afternoon",
             date: "2021-01-20",
             distance: 1,
+            volId: null,
         },
         {
             id: 3,
@@ -66,6 +68,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with Shopping from Asda",
             date: "2021-01-28",
             distance: 2.3,
+            volId: null,
         },
         {
             id: 4,
@@ -75,6 +78,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with picking up my prescription from local gp",
             date: "2021-03-20",
             distance: 0.8,
+            volId: null,
         },
         {
             id: 5,
@@ -84,6 +88,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help to drop off and pick up from my hospital",
             date: "2021-01-10",
             distance: 2,
+            volId: null,
         },
         {
             id: 6,
@@ -93,6 +98,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need someone to give me a call to have a chat",
             date: "2021-01-20",
             distance: 5,
+            volId: null,
         },
         {
             id: 7,
@@ -102,6 +108,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with Shopping from Tesco",
             date: "2021-01-20",
             distance: 4,
+            volId: null,
         },
         {
             id: 8,
@@ -111,6 +118,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with mowing my garden",
             date: "2021-01-20",
             distance: 2,
+            volId: null,
         },
         {
             id: 9,
@@ -120,6 +128,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with Shopping from Sainsbuyrys",
             date: "2021-01-20",
             distance: 3,
+            volId: null,
         },
         {
             id: 10,
@@ -129,6 +138,7 @@ export default function VolunteerSearchTask() {
             taskSummary: "I need help with picking up my prescription",
             date: "2021-01-20",
             distance: 3,
+            volId: null,
         },
     ]);
     const [showDialog, setShowDialog] = React.useState(false);
@@ -197,7 +207,6 @@ export default function VolunteerSearchTask() {
                 sort: true,
             },
         },
-
         // { name: "startTime", label: "Start Time", width: 100, type: "time" },
         //  { name: "endTime", label: "End Time", width: 100, type: "time" },
         {
@@ -205,6 +214,8 @@ export default function VolunteerSearchTask() {
             label: " Task Detail",
 
             options: {
+                filter: false,
+                sort: false,
                 customBodyRender: (value, tableMeta, updateValue) => {
                     return (
                         <div className={classes.cellDiv} >
@@ -261,8 +272,8 @@ export default function VolunteerSearchTask() {
     return (
         <React.Fragment>
 
-            <div style={{ height: "90%", width: "100%" }}>
-
+            <div style={{ height: "100%", width: "100%" }}>
+                <h1 className={classes.h1}>Search Task</h1>
                 <MuiThemeProvider theme={theme}>
                     <MUIDataTable
                         title={"Pending Task List"}
