@@ -1,8 +1,8 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, Button, IconButton,  Switch, FormControlLabel, FormGroup, MenuItem, Menu, SvgIcon } from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import { Link } from "react-router-dom";
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import { AppBar, Toolbar, Typography, Button, IconButton,  Switch, FormControlLabel, FormGroup, MenuItem, Menu, SvgIcon } from "@material-ui/core"
+import AccountCircle from "@material-ui/icons/AccountCircle"
+import { Link } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,8 +45,7 @@ const AppNavBar = () => {
         setAnchorEl(null);
     };
     const handleSignOut = () =>{
-        setAuth(false);   
-        //alert(auth);
+        setAuth(false);          
         handleClose();
     };
 

@@ -12,7 +12,8 @@ const SPACED_DATE_FORMAT = "DD MMM YYYY";
 
 const options = {
     filterType: "multiselect",
-    selectableRows: false,
+    selectableRows: "none", //can also be single/mulitple
+    selectableRowsOnClick: true,
     count: 5
 };
 
@@ -145,7 +146,7 @@ export default function VolunteerSearchTask() {
     const [dialogData, setDialogData] = React.useState(null);
 
     const handleClickOpen = (e, dialogData) => {
-        setShowDialog(true)
+        //setShowDialog(true)
         setDialogData(dialogData)
     }
 
@@ -227,7 +228,7 @@ export default function VolunteerSearchTask() {
                                 size="small"
                                 style={{ marginLeft: 16 }}
                                 value={value}                                
-                                onClick={(e) => handleClickOpen(e, value)}                           
+                                onClick ={(e) => handleClickOpen(e, value)}                           
                             >
                                 View
                         </Button>
@@ -254,7 +255,8 @@ export default function VolunteerSearchTask() {
                             className="button"
                             value={value}
                             onClick={() => {
-                                console.log(value);
+                               // console.log(value);
+                               // console.log(tableMeta.rowData);
                                 const updatedPendingTask = pendingTasks.filter(
                                     (task) => task.id !== value
                                 );
@@ -281,9 +283,9 @@ export default function VolunteerSearchTask() {
                         columns={columns}
                         options={options}
                         
-                    />
-                    <TaskDialog open={showDialog} handleClose={handleClose} title="Task Summary" data={dialogData} />   
+                    />                   
                 </MuiThemeProvider>
+                <TaskDialog open={showDialog} handleClose={handleClose} title="Task Summary" data={dialogData} />   
             </div>
         </React.Fragment>
     );
