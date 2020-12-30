@@ -1,0 +1,30 @@
+html,
+body {
+  height: 100%;
+   margin: 0;
+}
+p {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 90%;
+  text-align: justify;
+}
+
+span {
+  margin: 0 10px;
+}
+
+.AppContent{
+   display: flex;
+   flex-direction: column;
+   min-height: 80vh;
+   background-color: #f1eae0;
+   align-items: center;
+   justify-content: center;
+   font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
