@@ -1,11 +1,13 @@
 import React,{useState} from 'react';
 import TextField from '@material-ui/core/TextField';
+import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from "@material-ui/core/Button";
 import AddressForm from './AddressForm';
+
 
 const useStyles = {
   textFld: { width: '85%', height: 40, paddingLeft: 8 } , 
@@ -18,8 +20,7 @@ const useStyles = {
   },
 };
 
-
-  export default function VolunteerRegistration(props) {
+  export default function RegistrationPage(props) {
 
     const initialInputState = { firstName : "" , lastName:"" , DateOfBirth:"", email:"", password:""  } 
     
@@ -37,14 +38,17 @@ const useStyles = {
       alert('Data has been successfully saved')
       console.log(formData)
       }
-   
+
+      const param = useParams();
+      const user  = param.user;
+                
    return (
      
    <React.Fragment>
      
-      <Typography variant="h5" align="center"> Volunteer Registration </Typography>
+      <Typography variant="h5" align="center"> { user }  Registration </Typography>
 
-      <p> Please enter your details here</p>
+      <p style = {{ marginLeft: '10px' }}> Please enter your details here</p>
       <form onSubmit={handleSubmit} >      
       <Grid container spacing={3} >
         <Grid item xs={12} sm={6}>
@@ -79,6 +83,10 @@ const useStyles = {
           <TextField
             id="DateOfBirth"
             name="DateOfBirth"
+            type= "date"
+            InputLabelProps={{
+              shrink: true,
+            }}
             label="Date Of Birth"
             onChange = { handleChange }
             value= {DateOfBirth || ''}
@@ -127,10 +135,13 @@ const useStyles = {
         </Grid>
        
         <Grid item xs={12}>
+         
+         { (`${user}` === 'Volunteer') && 
           <FormControlLabel
             control={<Checkbox color="secondary" style = {{ marginLeft: '5px' }} name="dbsCheck" value="yes" />}
-            label="Do you have a valid DBS certificate?"
-          />
+            label="I have a valid DBS certificate"
+          /> }  
+
         </Grid>
         <Grid item xs={12}>
 

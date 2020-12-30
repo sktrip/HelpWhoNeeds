@@ -17,11 +17,11 @@ const useStyles = {
 
   export default function AddressForm(props) {
 
-    const initialInputState = { postcode:"", address1:"", address2:"", city:"" , country:""} 
+    const initialInputState = { postcode:"", address1:"", address2:"", city:"" , county:""} 
     
     const [addressData, setAddressData] = useState({initialInputState})
 
-    const { postcode, address1, address2, city, country } = addressData
+    const { postcode, address1, address2, city, county } = addressData
     
 
     const handleChange= (e) => {
@@ -91,14 +91,13 @@ const useStyles = {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-          required
-           id="country" 
-           name="country"  
+           id="county" 
+           name="county"  
            variant="outlined" 
            onChange = { handleChange }
-           value= {country || ''}
+           value= {county || ''}
            style = {useStyles.textFld}
-           label="Country" />
+           label="County" />
         </Grid>
         </Grid>
        

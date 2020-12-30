@@ -6,7 +6,7 @@ import About from "./components/landing/About"
 import Contact from "./components/landing/Contact"
 import Footer from "./components/structure/Footer"
 import SignIn from "./components/login/SignIn"
-import VolunteerRegistration  from "./components/volunteerRegistration/VolunteerRegistration"
+import RegistrationPage  from "./components/registrationPage/RegistrationPage"
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom"
 import './App.css'
 
@@ -29,8 +29,8 @@ function App() {
                 <Route path="/login/:userType">
                     <SignIn />
                 </Route>      
-                <Route path="/volunteerRegistration">
-                    <VolunteerRegistration />
+                <Route path="/registrationPage/:user">
+                    <RegistrationPage />
                 </Route>                       
                 </Switch>
                 </div>

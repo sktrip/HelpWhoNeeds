@@ -17,7 +17,7 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
+            <Link color="inherit" to="https://material-ui.com/">
                 Your Website
     </Link>{" "}
             {new Date().getFullYear()}
@@ -48,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
     const classes = useStyles();
-    let param = useParams();
+    const param = useParams();
+    const user = param.userType;
 
     return (
         <Container component="main" maxWidth="xs">
@@ -60,7 +61,7 @@ export default function SignIn() {
                 <Typography component="h1" variant="h5">
                     Sign in
         </Typography>
-                <p>user: {param.userType}</p>
+                <p>user: {user} </p>
                 <form className={classes.form} noValidate>
                     <TextField
                         variant="outlined"
@@ -99,21 +100,21 @@ export default function SignIn() {
         </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
+                            <Link to="#" variant="body2">
                                 Forgot password?
         </Link>
                         </Grid>
-                        <Grid item>
-                        <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        component={Link}
-                        to={"/volunteerRegistration"}
-                        className={classes.submit}
+                        <Grid >
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                component={Link}
+                                to={`/registrationPage/${user}`}
+                                className={classes.submit}
 
-                    >Sign Up
+                            >Sign Up
                     </Button>
                         </Grid>
                     </Grid>
