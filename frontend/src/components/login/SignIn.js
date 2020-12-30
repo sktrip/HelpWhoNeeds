@@ -99,27 +99,21 @@ export default function SignIn() {
                         to={"/volunteerSearchTask"}
                     >
                         Sign In
-        </Button>
+                    </Button>
                     <Grid container>
                         <Grid item xs>
                             <Link to="#" variant="body2">
                                 Forgot password?
-        </Link>
+                            </Link>
                         </Grid>
-                        <Grid >
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                component={Link}
-                                to={`/registrationPage/${user}`}
-                                className={classes.submit}
-
-                            >Sign Up
-                    </Button>
+                    <Grid container>
+                        <Grid item xs>
+                            <div  className="w-100 text-center mt-2">
+                            New User ?<Link to={`/signUp/${user}`} variant="body2">
+                                Sign Up </Link> 
+                            </div>
                         </Grid>
-                    </Grid>
+                     </Grid></Grid>
                 </form>
             </div>
             <Box mt={8}>

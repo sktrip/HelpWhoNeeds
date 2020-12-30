@@ -48,7 +48,7 @@ const useStyles = {
      
       <Typography variant="h5" align="center"> { user }  Registration </Typography>
 
-      <p style = {{ marginLeft: '10px' }}> Please enter your details here</p>
+      <p text-align ="left" style = {{ marginLeft: '10px', textAlign:"leftJustify" }}> Please enter your details here</p>
       <form onSubmit={handleSubmit} >      
       <Grid container spacing={3} >
         <Grid item xs={12} sm={6}>
@@ -143,9 +143,9 @@ const useStyles = {
           /> }  
 
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} align="center">
 
-        <Button variant = "contained" justify-content ='center' type="submit">Submit</Button>
+        <Button variant = "contained"  className = "btn btn-primary w-100" type="submit">Submit</Button>
         </Grid>
         </Grid>
         </form>

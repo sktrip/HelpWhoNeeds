@@ -6,6 +6,7 @@ import About from "./components/landing/About"
 import Contact from "./components/landing/Contact"
 import Footer from "./components/structure/Footer"
 import SignIn from "./components/login/SignIn"
+import SignUp from "./components/login/SignUp"
 import RegistrationPage  from "./components/registrationPage/RegistrationPage"
 import VolunteerSearchTask from "./components/volunteerTask/VolunteerSearchTask"
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom"
@@ -29,7 +30,10 @@ function App() {
                 </Route>
                 <Route path="/login/:userType">
                     <SignIn />
-                </Route>      
+                </Route>  
+                <Route path="/signUp/:user">
+                    <SignUp />
+                </Route>     
                 <Route path="/registrationPage/:user">
                     <RegistrationPage />
                 </Route> 
