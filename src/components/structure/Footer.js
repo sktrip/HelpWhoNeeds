@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles({
     footer:{
@@ -6,8 +6,7 @@ const useStyles = makeStyles({
         height: "50px",
         padding: "15px",
         backgroundColor: "#eee",
-        borderTop: "1px solid #e0e0e0",
-       // bottom: "0",
+        borderTop: "1px solid #e0e0e0",       
         position: "absolute",
         width: "100%",
         textAlign: "center",

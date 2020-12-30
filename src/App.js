@@ -7,6 +7,7 @@ import Contact from "./components/landing/Contact"
 import Footer from "./components/structure/Footer"
 import SignIn from "./components/login/SignIn"
 import RegistrationPage  from "./components/registrationPage/RegistrationPage"
+import VolunteerSearchTask from "./components/volunteerTask/VolunteerSearchTask"
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom"
 import './App.css'
 
@@ -31,13 +32,17 @@ function App() {
                 </Route>      
                 <Route path="/registrationPage/:user">
                     <RegistrationPage />
-                </Route>                       
+                </Route> 
+                <Route path="/volunteerSearchTask">
+                    <VolunteerSearchTask />
+                </Route>             
                 </Switch>
                 </div>
                 <Footer />
             </div>
         </Router>
     );
+
 }
 
 export default App;
