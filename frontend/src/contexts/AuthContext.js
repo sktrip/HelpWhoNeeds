@@ -15,13 +15,13 @@ export function AuthProvider({ children }) {
     return auth.createUserWithEmailAndPassword(email, password)
   }
 
-//   function login(email, password) {
-//     return auth.signInWithEmailAndPassword(email, password)
-//   }
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password)
+  }
 
-//   function logout() {
-//     return auth.signOut()
-//   }
+  function signout() {
+    return auth.signOut()
+  }
 
 //   function resetPassword(email) {
 //     return auth.sendPasswordResetEmail(email)
@@ -46,9 +46,9 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    //login,
+    login,
     signup,
-    //logout,
+    signout,
     //resetPassword,
     //updateEmail,
     //updatePassword

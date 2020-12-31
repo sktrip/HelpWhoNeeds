@@ -1,0 +1,9 @@
+helloimagile : abcd123
+sktripurari ; abs123
+valid@gmail.com qwerty123
+SignUp.js:70 validmail@gmai.com password123
+skt@gmail.com current123
+fghhh@hhhh.com lkjh122
+
+
+auth.esm.js:219 POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAQD-Hez1rIIaIlTYomLubx8QCfjmH9iNQ 400
