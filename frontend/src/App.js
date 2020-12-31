@@ -10,11 +10,14 @@ import SignUp from "./components/login/SignUp"
 import RegistrationPage  from "./components/registrationPage/RegistrationPage"
 import VolunteerSearchTask from "./components/volunteerTask/VolunteerSearchTask"
 import { BrowserRouter as Router,  Route, Switch } from "react-router-dom"
-import './App.css'
+import { AuthProvider } from "./contexts/AuthContext"
+//import firebase from "./firebase/app"
 
 function App() {
+    
     return (
         <Router>
+            <AuthProvider>
             <div className="App">
                 <AppNavBar />
                 <div className="AppContent">
@@ -44,6 +47,7 @@ function App() {
                 </div>
                 <Footer />
             </div>
+            </AuthProvider>
         </Router>
     );
 

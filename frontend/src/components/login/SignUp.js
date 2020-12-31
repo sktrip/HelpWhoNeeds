@@ -5,14 +5,16 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-//import { useAuth } from "../../contexts/AuthContext"
+import { useAuth } from "../../contexts/AuthContext"
+import { AuthContext } from "../../contexts/AuthContext"
+
 
 function Copyright() {
     return (
@@ -39,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.main,
     },
     form: {
-        width: "100%", // Fix IE 11 issue.
+        width: "100%", 
         marginTop: theme.spacing(1),
     },
     submit: {
@@ -47,38 +49,40 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+// export const AuthContext = React.createContext();
 
 export default function Signup() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  //const { signup } = useAuth()
+  const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  //const history = useHistory()
+  const history = useHistory()
   const classes = useStyles();
   const param = useParams();
   const user = param.user;
+  
 
-  async function handleSubmit(e) {
+    async function handleSubmit(e) {
     e.preventDefault()
 
-//     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-//       return setError("Passwords does not match")
-//     }
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords does not match")
+    }
 
-//     try {
-//       setError("")
-//       setLoading(true)
-//       await signup(emailRef.current.value, passwordRef.current.value)
-//       history.push("/")
-//     } catch {
-//       setError("Failed to create an account")
-//     }
+    try {
+      setError("")
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+      history.push("/")
+    } catch {
+      setError("Failed to create an account")
+    }
 
-//     setLoading(false)
-//   
+    setLoading(false)  
 }
+
   return (
     <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -98,10 +102,10 @@ export default function Signup() {
                     fullWidth
                     type="email" 
                     ref={emailRef} 
-                    id="email"
+                    // id="email"
                     label="Email Address"
-                    name="email"
-                    autoComplete="email"
+                    // name="email"
+                    // autoComplete="email"
                     autoFocus
                 />
                 <TextField
@@ -109,27 +113,25 @@ export default function Signup() {
                     margin="normal"
                     required
                     fullWidth
-                    name="password"
+                    // name="password"
                     type="password" 
                     ref={passwordRef}
                     label="Password"
-                    id="password"
-                    autoComplete="current-password"
+                    // id="password"
+                    // autoComplete="current-password"
                 />
                  <TextField
                     variant="outlined"
                     margin="normal"
                     required
                     fullWidth
-                    name="confirmPassword"
+                    // name="confirmPassword"
                     type="password" 
                     ref={passwordConfirmRef}
                     label="Confirm Password"
-                    id="password"
-                    autoComplete="current-password"
+                    // id="password"
+                    // autoComplete="current-password"
                 />
-                {/* <Grid container>
-                    <Grid item xs> */}
                         <Button
                                 type="submit"
                                 fullWidth
@@ -141,10 +143,7 @@ export default function Signup() {
 
                             >Sign Up
                     </Button>
-            {/*<Button disabled={loading} className="w-100" type="submit">
-              Sign Up
-            </Button> */}
-          </form>
+              </form>
       {/* <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
       </div> */}
